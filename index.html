@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rock_Papper_Scissor</title>
+        <link rel="icon" href="https://vectorified.com/images/rock-paper-scissors-icon-7.jpg">
+        <meta charset="UTF-8">
+        <meta name="author" content="Rithish">
+        <meta name="description" content="stone paper scissor game">
+        <meta name="viewport" content="width=device-width initial-scale=1.0">
+        <style>
+            #title{
+                color:rgb(209, 3, 255);
+                font-style:oblique;
+            }
+            .my-score-box{
+                height: 300px;
+                width: 300px;
+                background-color: rgb(209, 3, 255);
+                border-radius: 5px;
+                position:relative;
+                left: 150px;
+                top: 50px;
+            }
+            .AI-score-box{
+                height: 300px;
+                width: 300px;
+                background-color: rgb(209, 3, 255);
+                border-radius: 5px;
+                position: relative;
+                left: 1055px;
+                bottom: 321px;
+            }
+            .my-score{
+                color:white;
+                font-size:xx-large;
+                font-style:oblique;
+                position: relative;
+                top: 120px;
+            }
+            .AI-score{
+                color:white;
+                font-size:xx-large;
+                font-style: oblique;
+                position: relative;
+                top: 120px;
+            }
+            .click{
+                position: relative;
+                width: 600px;
+                height: 70px;
+                display:flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-evenly;
+                position: relative;
+                bottom: 200px;
+                left: 451px;
+            }
+            .b1{
+                background-color: rgb(209, 3, 255);
+                height: 60px;
+                width: 110px;
+                border-radius: 5px;
+                color:white;
+                border-color: rgb(129, 0, 250);
+                font-size: large;
+            }
+        </style>
+        <script>
+            var my_points=0;
+            var AI_points=0;
+            let keys = {1:"Rock",2:"Paper",3:"Scissor"};
+            function move(i)
+            {
+                var AI_Move = Math.ceil(Math.random() * 3);
+                let my_move = i;
+                if(my_move == 1 && AI_Move == 3)
+                {
+                   document.querySelector(".display1").innerText = "Your Move: Rock";
+                   document.querySelector(".display2").innerText = "AI's Move: Scissor";
+                   let s = document.querySelector(".my-score");
+                   s.textContent = ++my_points;
+                }
+                else if(my_move == 2 && AI_Move == 1)
+                {
+                    document.querySelector(".display1").innerText = "Your Move: Paper";
+                    document.querySelector(".display2").innerText = "AI's Move: Rock";
+                    let s = document.querySelector(".my-score");
+                    s.textContent = ++my_points;
+                }
+                else if(my_move == 3 && AI_Move == 2)
+                {
+                    document.querySelector(".display1").innerText = "Your Move: Scissor";
+                    document.querySelector(".display2").innerText = "AI's Move: Paper";
+                    let s = document.querySelector(".my-score");
+                    s.textContent = ++my_points;
+                }
+                else if(AI_Move == 1 && my_move == 3)
+                {
+                    document.querySelector(".display1").innerText = "Your Move: Scissor";
+                    document.querySelector(".display2").innerText = "AI's Move: Rock";
+                    let a = document.querySelector(".AI-score");
+                    a.textContent = ++AI_points;
+
+                }
+                else if(AI_Move == 2 && my_move == 1)
+                {
+                    document.querySelector(".display1").innerText = "Your Move: Rock"; // ✅ Corrected
+                    document.querySelector(".display2").innerText = "AI's Move: Paper";
+                    let a = document.querySelector(".AI-score");
+                    a.textContent = ++AI_points;
+                }
+                else if(AI_Move == 3 && my_move == 2)
+                {
+                    document.querySelector(".display1").innerText = "Your Move: Scissor";
+                    document.querySelector(".display2").innerText = "AI's Move: Paper";
+                    let a = document.querySelector(".AI-score");
+                    a.textContent = ++AI_points;
+                }
+                else
+                {
+                    document.querySelector(".display1").innerText = `Your Move: ${keys[my_move]}`;
+                    document.querySelector(".display2").innerText = `AI's Move: ${keys[my_move]}`;
+                }
+            }
+        </script>
+    </head>
+    <body style="overflow: hidden;">
+        <header>
+            <center><h1 id="title">Rock Paper Scissor</h1></center>
+        </header>
+        <main>
+            <div class="my-score-box"><center><p class="my-score">0</p></center></div>
+            <h1 class="display1" style="display:inline; position: relative; left:640px; bottom: 110px; color:rgb(209, 3, 255);"> Start Your Game !</h1>
+            <h1 class="display2" style="display:inline; position: relative; left:390px; bottom:40px; color:rgb(209, 3, 255);"></h1>
+            <div class="AI-score-box"><center><p class="AI-score">0</p></center></div>
+            <div class="click">
+                <button class="b1" onclick="move(1)"><i>Rock</i></button>
+                <button class="b1" onclick="move(2)"><i>Paper</i></button>
+                <button class="b1" onclick="move(3)"><i>Scissor</i></button>
+            </div>
+        </main>
+        <footer></footer>
+    </body>
+</html>
